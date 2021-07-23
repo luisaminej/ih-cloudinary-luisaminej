@@ -29,6 +29,7 @@ const movieController   = require('./../controllers/movieController')
 const fileUploader      = require('./../config/cloudinary.config')
 // 2. RUTEO
 router.get('/', movieController.listMovies)
+
 router.get("/create", movieController.createMovie)
 router.post('/create', fileUploader.single('movie-cover-image'), movieController.processMovie)
 

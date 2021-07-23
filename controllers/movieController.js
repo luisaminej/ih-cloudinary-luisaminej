@@ -34,13 +34,25 @@ Movie.create({
 
 exports.listMovies = async (req, res) => {
 
-    Movie.find({})
-        .then(peliculasEncontradas => {
-            res.render("movie-views/movies-list", {
-                movies: peliculasEncontradas
-            })
+    // Movie.find({})
+    //     .then(peliculasEncontradas => {
+    //         res.render("movie-views/movies-list", {
+    //             movies: peliculasEncontradas
+    //         })
+    //     })
+    //     .catch(e => console.log(e))
+
+    //hacerlo con await
+    try {
+
+    const peliculasEncontradas = await Movie.find({})
+        res.render("movie-views/movies-list", {
+            movies: peliculasEncontradas
         })
-        .catch(e => console.log(e))
+    } catch (e) {
+        console.log(e)
+    }
+
 
 }
 
